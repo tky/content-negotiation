@@ -28,12 +28,12 @@
         </property>
     </bean>
     
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-       <!-- All configuration is now done by the manager - since Spring V3.2 -->
+    <!-- 
+    <bean class="com.sample.controller.LocalContentNegotiatingViewResolver">
        <property name="contentNegotiationManager" ref="cnManager"/>
     </bean>
- 
-     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+  -->
+    <bean class="com.sample.controller.LocalContentNegotiatingViewResolver">
         <property name="contentNegotiationManager" ref="cnManager"/>
  
         <!-- Define the view resolvers explicitly -->
