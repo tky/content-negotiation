@@ -23,6 +23,7 @@
             <map>
                 <entry key="html" value="text/html" />
                 <entry key="json" value="application/json" />
+                <entry key="jsonp" value="application/javascript"/>
             </map>
         </property>
     </bean>
@@ -43,6 +44,7 @@
                     <property name="suffix" value=".jsp"/>
                 </bean>
                 <bean class="com.sample.controller.JsonViewResolver" />
+                <bean class="com.sample.controller.JsonPViewResolver" />
             </list>
         </property>
     </bean>
