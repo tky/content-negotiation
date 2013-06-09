@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans 
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+                
+    <mvc:annotation-driven />
+    <context:component-scan base-package="com.sample.controller" use-default-filters="false">
+        <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+    </context:component-scan>
+    
+    
+    <bean id="cnManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="ignoreAcceptHeader" value="true" />
+        <property name="defaultContentType" value="text/html" />
+
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html" />
+                <entry key="json" value="application/json" />
+            </map>
+        </property>
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+       <!-- All configuration is now done by the manager - since Spring V3.2 -->
+       <property name="contentNegotiationManager" ref="cnManager"/>
+    </bean>
+ 
+     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager" ref="cnManager"/>
+ 
+        <!-- Define the view resolvers explicitly -->
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="WEB-INF/jsp/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+                <bean class="com.sample.controller.JsonViewResolver" />
+            </list>
+        </property>
+    </bean>
+    
+    <mvc:resources location="/, classpath:/META-INF/web-resources/" mapping="/resources/**"/>
+    <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
+
+    <mvc:default-servlet-handler/>
+</beans>
