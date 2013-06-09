@@ -11,11 +11,8 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 
 public class LocalContentNegotiatingViewResolver extends ContentNegotiatingViewResolver {
 
-    // [application/javascript]
     /**
-     * MediaTypeの判定を拡張します。
-     * 
-     * callbackが指定された場合はjsonpにします。
+     * MediaTypeの判定を拡張しcallbackが指定された場合はjsonpにします。
      */
     @Override
     protected List<MediaType> getMediaTypes(HttpServletRequest request) {
