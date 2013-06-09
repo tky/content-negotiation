@@ -16,7 +16,6 @@
               http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
               http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
              ">
-    <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
     <context:spring-configured/>
     
     <context:component-scan base-package="com.sample">

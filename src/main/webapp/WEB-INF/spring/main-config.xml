@@ -38,7 +38,6 @@
     </bean>
     
     <mvc:resources location="/, classpath:/META-INF/web-resources/" mapping="/resources/**"/>
-    <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
 
     <mvc:default-servlet-handler/>
 </beans>
