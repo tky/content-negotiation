@@ -10,8 +10,8 @@ public class SampleController {
     
 
     @RequestMapping(value = "{id}")
-    public String execute(@PathVariable("id") Long id, Model model) {
+    public void execute(@PathVariable("id") Long id, Model model) {
         model.addAttribute(new SampleModel(id, "name"));
-        return "sample";
+        // return "sample";
     }
 }
