@@ -35,7 +35,6 @@ public class JsonPView extends MappingJacksonJsonView {
                 super.render(model, request, response);
             }
         }
-
         else {
             super.render(model, request, response);
         }
